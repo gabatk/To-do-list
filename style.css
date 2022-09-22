@@ -1,0 +1,46 @@
+html { 
+    margin: 0; 
+    padding: 0; 
+    height: 100%; 
+
+}
+/* html{
+    width: 100%;
+    margin: 0;
+    
+} */
+body{
+    
+    margin-left: 15%;
+    margin-right: 15%;
+    text-align: center;
+    border: 1px solid rgb(112, 109, 112);
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px rgb(134, 129, 134);
+   
+    
+
+}
+
+header{
+    padding: 1%;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    background: linear-gradient(90deg, rgba(232,221,232,1) 0%, rgba(255,255,255,1) 50%, rgba(232,221,232,1) 100%);
+    
+}
+
+.content{
+    background: linear-gradient(90deg, rgba(232,221,232,1) 0%, rgba(255,255,255,1) 50%, rgba(232,221,232,1) 100%);
+}
+.fa-solid{
+    margin-left: 18px;
+}
+
+.input-area{
+    line-height: 30px;
+}
+
+.hide{
+    display: none;
+}

@@ -1,39 +1,54 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="https://kit.fontawesome.com/e3bd443a68.js" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="/style.css">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script
+      src="https://kit.fontawesome.com/e3bd443a68.js"
+      crossorigin="anonymous"
+    ></script>
+    <link rel="stylesheet" href="/style.css" />
     <title>To do list</title>
-</head>
-<body>
-<header>
-    <h1>TO DO LIST</h1> 
-    <i class="fa-solid fa-list-ul"></i>
-    <input type="text" placeholder="Type the task here:">
-    <button type="submit">Add</button>
-</header>
+  </head>
 
-<!-- <input type="checkbox" id="gridCheck">
-<label for="gridCheck">
-    I want to add more information to this task
-</label> -->
+  <body>
+    <header>
+      <h1>TO DO LIST <i class="fa-solid fa-list-ul"></i></h1>
+    </header>
 
-<label for="inputState">Task category</label>
-      <select id="inputState" class="form-control">
-        <option selected>Not defined</option>
-        <option>Entertainment</option>
-        <option>Health</option>
-        <option>Household duties</option>
-        <option>Physical activity</option>
-        <option>Other</option>
-      </select>
-   
-<h2>TASK LIST:</h2>
-<h4>Your list is empty.</h4>
-    
-<script src="/script.js"></script>
-</body>
+    <div class="content">
+      <div class="input-area">
+        <div>
+          <input type="text" placeholder="Type the task here:" />
+          <button type="submit">Add</button>
+        </div>
+
+        <div>
+          <label for="inputState">Task category</label>
+          <select id="inputState" class="form-control">
+            <option selected>Not defined</option>
+            <option>Entertainment</option>
+            <option>Health</option>
+            <option>Household duties</option>
+            <option>Physical activity</option>
+            <option>Other</option>
+          </select>
+        </div>
+
+        <div>
+          <input type="checkbox" id="gridCheck" />
+          <label for="gridCheck">
+            I want to add more information to this task
+          </label>
+
+        </div>
+      </div>
+
+      <h2>TASK LIST:</h2>
+      <h4 class="hide">Your list is empty.</h4>
+    </div>
+
+    <script src="/script.js"></script>
+  </body>
 </html>

@@ -41,7 +41,32 @@
           <label for="gridCheck">
             I want to add more information to this task
           </label>
-
+        </div>
+            <div class="more-info hide">
+            <div>
+              <label for="task-date">Task date:</label>
+              <input
+                type="date"
+                id="task-date"
+                name="task-start"
+                min="2022-01-01"
+                max="2027-12-31"
+              />
+            </div>
+            <div>
+              <label for="appt">Choose a time for your task:</label>
+              <input
+                type="time"
+                id="appt"
+                name="task-time"
+                min="09:00"
+                max="18:00"
+                required
+              />
+            </div>
+            <textarea rows="4" cols="50" placeholder="Additional information:"></textarea>
+          </div>
+      </div>
         </div>
       </div>
 

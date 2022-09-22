@@ -20,14 +20,14 @@
     <div class="content">
       <div class="input-area">
         <div>
-          <input type="text" placeholder="Type the task here:" />
-          <button type="submit">Add</button>
+          <input type="text" placeholder="Type the task here:" id="task-form"/>
+          <button class="add-task" type="submit">Add</button>
         </div>
 
         <div>
           <label for="inputState">Task category</label>
           <select id="inputState" class="form-control">
-            <option selected>Not defined</option>
+            <option  selected disabled>Not defined</option>
             <option>Entertainment</option>
             <option>Health</option>
             <option>Household duties</option>
@@ -35,10 +35,11 @@
             <option>Other</option>
           </select>
         </div>
+        <p id="form-alert"></p>
 
-        <div class="checkbox">
+        <div>
           <input type="checkbox" id="gridCheck" />
-          <label for="gridCheck">
+          <label>
             I want to add more information to this task
           </label>
         </div>
@@ -71,6 +72,8 @@
       </div>
 
       <h2>TASK LIST:</h2>
+      <ul class="class-list">
+      </ul>
       <h4 class="hide">Your list is empty.</h4>
     </div>
 

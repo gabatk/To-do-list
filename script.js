@@ -1,37 +1,37 @@
-const moreInfoCheck = document.querySelector('#gridCheck')
-const moreInfoForm = document.querySelector('.more-info')
-const taskContent = document.querySelector('#task-form')
-const taskCategory = document.querySelector('#inputState')
-const addBtn = document.querySelector('.add-task')
-// const formError = document.getElementById('#form-alert')
-
+const moreInfoCheck = document.querySelector("#gridCheck");
+const moreInfoForm = document.querySelector(".more-info");
+const taskContent = document.querySelector("#task-form");
+const taskCategory = document.querySelector("#inputState");
+const addBtn = document.querySelector(".add-task");
+const ulList = document.querySelector(".task-list");
 
 const showMore = () => {
-    moreInfoForm.classList.toggle('hide')
-}
+  moreInfoForm.classList.toggle("hide");
+};
 
-let text
+let text;
 
 const validateForm = () => {
-    if (taskContent.value == '' && taskCategory.value == "Not defined"){
-    text = "Please type the task and check the category!"
-   } else if (taskContent.value !== '' && taskCategory.value == "Not defined"){
-    text = "Please check the category!"
-   } else if (taskContent.value == '' && taskCategory.value !== "Not defined"){
-    text = "Please type the task!"
-   } 
-//    formError.innerHTML = text
-   document.getElementById("form-alert").innerHTML = text
-        
-    }
+  if (taskContent.value == "" && taskCategory.value == "Not defined") {
+    text = "Please type the task and check the category!";
+  } else if (taskContent.value !== "" && taskCategory.value == "Not defined") {
+    text = "Please check the category!";
+  } else if (taskContent.value == "" && taskCategory.value !== "Not defined") {
+    text = "Please type the task!";
+  }
 
+  document.getElementById("form-alert").innerHTML = text;
+};
 
+const addTask = () => {
+  validateForm();
 
+  const liItem = document.createElement("li");
+  liItem.textContent = taskContent.value;
+  ulList.append(liItem);
+};
 
-
-
-
-moreInfoCheck.addEventListener('click',showMore)
-addBtn.addEventListener('click',validateForm)
+moreInfoCheck.addEventListener("click", showMore);
+addBtn.addEventListener("click", addTask);
 
 // TODO: sprawdzić konwencje nazewnictwa id

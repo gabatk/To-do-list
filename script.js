@@ -9,27 +9,31 @@ const showMore = () => {
   moreInfoForm.classList.toggle("hide");
 };
 
-let text;
+let text
 
 const validateForm = () => {
+    text = "";
   if (taskContent.value == "" && taskCategory.value == "Not defined") {
     text = "Please type the task and check the category!";
-  } else if (taskContent.value !== "" && taskCategory.value == "Not defined") {
+  } else if (taskCategory.value == "Not defined") {
     text = "Please check the category!";
-  } else if (taskContent.value == "" && taskCategory.value !== "Not defined") {
+  } else if (taskContent.value == "") {
     text = "Please type the task!";
   }
 
   document.getElementById("form-alert").innerHTML = text;
+
 };
 
 const addTask = () => {
   validateForm();
 
+  if(text==="") {
   const liItem = document.createElement("li");
   liItem.textContent = taskContent.value;
   ulList.append(liItem);
 };
+}
 
 moreInfoCheck.addEventListener("click", showMore);
 addBtn.addEventListener("click", addTask);

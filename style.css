@@ -34,10 +34,10 @@ header {
     line-height: 30px;
 }
 
-.add-task:hover{
+.add-task:hover {
     border-color: rgb(207, 117, 207);
-    /* background-color: rgb(207, 117, 207); */
-    background-color: rgb(144, 210, 219);
+    background-color: rgb(207, 117, 207);
+
 }
 
 .hide {
@@ -48,24 +48,27 @@ h2 {
     color: rgb(99, 28, 99);
 }
 
-li {
-    font-size: large;
+.task-list {
+    padding: 0;
 }
 
 .liElement {
     display: flex;
     position: relative;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    padding-left: 2%;
+    margin-bottom: 10px;
+    margin-right: 5%;
+    margin-left: 5%;
+    border-radius: 20px;
+    font-size: large;
+
 }
 
 .tools {
     position: absolute;
     left: 85%;
-}
-
-.liElement:before {
-    content: "-";
-    position: absolute;
-    left: -1%;
 }
 
 .tools>button {
@@ -74,6 +77,17 @@ li {
 }
 
 .tools>button:hover {
-   color: rgb(212, 84, 212)
+    color: rgb(212, 84, 212)
 }
 
+.category {
+    position: absolute;
+    left: 75%
+}
+
+.categoryButton {
+    background-color: transparent;
+    border: none;
+
+
+}

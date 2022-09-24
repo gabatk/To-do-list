@@ -50,3 +50,21 @@ header{
 h2{
     color: rgb(99, 28, 99);
 }
+
+li{
+  font-size:larger;  
+}
+
+.liElement{
+    
+    display: flex;
+   
+}
+
+.tools{
+    position: absolute;
+    left: 75%;
+}
+
+
+

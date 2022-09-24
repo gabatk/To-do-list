@@ -7,6 +7,15 @@ const ulList = document.querySelector(".task-list");
 // let taskDate = document.querySelector('#task-date')
 // const taskTime = document.querySelector('#hour')
 
+
+const colorDict = {
+ "Entertainment": "rgb(133, 130, 179)",
+ "Health" : "rgb(212, 190, 200)",
+ "Household duties" : "rgb(178, 200, 214)",
+ "Physical activity" : "rgb(190, 196, 252)",
+ "Other" : "rgb(158, 182, 230)"
+}
+
 const showMore = () => {
   moreInfoForm.classList.toggle("hide");
 };
@@ -33,6 +42,7 @@ const addTask = () => {
 
   if (text === "") {
     const liItem = document.createElement("li");
+    liItem.style.backgroundColor = colorDict[taskCategory.value]
     liItem.classList.add("liElement");
     liItem.textContent = taskContent.value;
     createToolsArea(liItem);
@@ -52,6 +62,7 @@ const addTask = () => {
 
 // }
 
+
 const createToolsArea = (tools) => {
   const toolsPanel = document.createElement("div");
   toolsPanel.classList.add("tools");
@@ -63,17 +74,19 @@ const createToolsArea = (tools) => {
 
   const editIcon = document.createElement("button");
   editIcon.classList.add("edit");
-  editIcon.innerHTML =
-    '<i class="fa-solid fa-pen-to-square icon fa-lg fa-fw"></i>';
+  editIcon.innerHTML = '<i class="fa-solid fa-pen-to-square icon fa-lg fa-fw"></i>';
 
-  const deleteIcon = document.createElement("button");
+  deleteIcon = document.createElement("button");
   deleteIcon.classList.add("delete");
   deleteIcon.innerHTML = '<i class="fa-solid fa-xmark icon fa-lg fa-fw"></i>';
 
   toolsPanel.append(confirmIcon, editIcon, deleteIcon);
 };
 
+
 moreInfoCheck.addEventListener("click", showMore);
 addBtn.addEventListener("click", addTask);
 
-// TODO: sprawdzić konwencje nazewnictwa id
+              
+ // TODO: sprawdzić konwencje nazewnictwa id
+                           

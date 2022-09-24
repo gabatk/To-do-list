@@ -34,6 +34,12 @@ header {
     line-height: 30px;
 }
 
+.add-task:hover{
+    border-color: rgb(207, 117, 207);
+    /* background-color: rgb(207, 117, 207); */
+    background-color: rgb(144, 210, 219);
+}
+
 .hide {
     display: none;
 }
@@ -43,7 +49,7 @@ h2 {
 }
 
 li {
-    font-size: larger;
+    font-size: large;
 }
 
 .liElement {
@@ -65,10 +71,9 @@ li {
 .tools>button {
     background-color: transparent;
     border: none;
-
-
 }
 
 .tools>button:hover {
-    color: rgb(99, 28, 99);
+   color: rgb(212, 84, 212)
 }
+

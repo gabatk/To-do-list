@@ -54,7 +54,7 @@ const elementCalls = () => {
 
   createCategoryArea(liItem);
   createToolsArea(liItem);
-  additionalInfo(liItem);
+  // additionalInfo(liItem);
   ulList.append(liItem);
 
   taskContent.value = "";
@@ -88,18 +88,22 @@ const createToolsArea = (tools) => {
   deleteIcon.innerHTML = '<i class="fa-solid fa-xmark icon fa-lg fa-fw"></i>';
 
   toolsPanel.append(confirmIcon, editIcon, deleteIcon);
-};
 
-const additionalInfo = (info) => {
   if (!moreInfoForm.classList.contains("hide")) {
-    const moreInfo = document.createElement("div");
-    moreInfo.classList.add("more");
-    moreInfo.innerHTML = '<i class="fa-solid fa-info"></i>';
-    info.append(moreInfo);
+    infoBtn = document.createElement("button");
+    infoBtn.classList.add("more");
+    infoBtn.innerHTML = '<i class="fa-solid fa-info  fa-lg fa-fw"></i>';
+    toolsPanel.append(infoBtn);
   }
 };
 
+// const showMoreInfo = () => {
+//   const dropdownList = document.createElement('div');
+//   liItem.append(dropdownList);
+//   dropdownList.textContent = moreInfoForm.value;
+// }
+
 moreInfoCheck.addEventListener("click", showMore);
 addBtn.addEventListener("click", elementCalls);
-
+// infoBtn.addEventListener('click', showMoreInfo);
 // TODO: sprawdzić konwencje nazewnictwa id

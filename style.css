@@ -92,8 +92,12 @@ h2 {
 
 .more {
     position: absolute;
-    left: 96%;
+    left: 95%;
+    background-color: transparent;
+    border: none;
 }
+
+
 
 .more:hover {
     color: rgb(212, 84, 212)

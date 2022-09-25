@@ -4,8 +4,17 @@ const taskContent = document.querySelector("#task-form");
 const taskCategory = document.querySelector("#inputState");
 const addBtn = document.querySelector(".add-task");
 const ulList = document.querySelector(".task-list");
-// let taskDate = document.querySelector('#task-date')
-// const taskTime = document.querySelector('#hour')
+const taskDate = document.querySelector("#task-date");
+const taskTime = document.querySelector("#hour");
+const extraMsg = document.querySelector("#extra-message");
+
+const notDefinedValue = "Not defined";
+let text;
+let liItem;
+let confirmBtn;
+let editBtn;
+let deleteBtn;
+let infoBtn;
 
 const colorDict = {
   Entertainment: "rgb(133, 130, 179)",
@@ -15,13 +24,14 @@ const colorDict = {
   Other: "rgb(158, 182, 230)",
 };
 
+const main = () => {
+  prepareDOMElements();
+  prepareDOMEvents();
+};
+
 const showMore = () => {
   moreInfoForm.classList.toggle("hide");
 };
-
-let text;
-const notDefinedValue = "Not defined";
-// document.getElementById('task-date') = new Date().toLocaleDateString()
 
 const validateForm = () => {
   text = "";
@@ -36,8 +46,6 @@ const validateForm = () => {
   document.getElementById("form-alert").innerHTML = text;
 };
 
-let liItem;
-
 const addTask = () => {
   validateForm();
 
@@ -47,63 +55,63 @@ const addTask = () => {
     liItem.classList.add("liElement");
     liItem.textContent = taskContent.value;
   }
-};
 
-const elementCalls = () => {
-  addTask();
-
-  createCategoryArea(liItem);
-  createToolsArea(liItem);
-  // additionalInfo(liItem);
+  createCategoryArea();
+  createToolsArea();
   ulList.append(liItem);
 
   taskContent.value = "";
   taskCategory.value = notDefinedValue;
 };
 
-const createCategoryArea = (category) => {
+const createCategoryArea = () => {
   const categoryArea = document.createElement("div");
   categoryArea.classList.add("category");
-  category.append(categoryArea);
+  liItem.append(categoryArea);
 
   categoryArea.textContent = taskCategory.value;
 };
 
-const createToolsArea = (tools) => {
+const createToolsArea = () => {
   const toolsPanel = document.createElement("div");
   toolsPanel.classList.add("tools");
-  tools.append(toolsPanel);
+  liItem.append(toolsPanel);
 
-  const confirmIcon = document.createElement("button");
-  confirmIcon.classList.add("confirm");
-  confirmIcon.innerHTML = '<i class="fa-solid fa-check icon fa-lg fa-fw"></i>';
+  confirmBtn = document.createElement("button");
+  confirmBtn.classList.add("confirm");
+  confirmBtn.innerHTML = '<i class="fa-solid fa-check icon fa-lg fa-fw"></i>';
 
-  const editIcon = document.createElement("button");
-  editIcon.classList.add("edit");
-  editIcon.innerHTML =
+  editBtn = document.createElement("button");
+  editBtn.classList.add("edit");
+  editBtn.innerHTML =
     '<i class="fa-solid fa-pen-to-square icon fa-lg fa-fw"></i>';
 
-  deleteIcon = document.createElement("button");
-  deleteIcon.classList.add("delete");
-  deleteIcon.innerHTML = '<i class="fa-solid fa-xmark icon fa-lg fa-fw"></i>';
+  deleteBtn = document.createElement("button");
+  deleteBtn.classList.add("delete");
+  deleteBtn.innerHTML = '<i class="fa-solid fa-xmark icon fa-lg fa-fw"></i>';
 
-  toolsPanel.append(confirmIcon, editIcon, deleteIcon);
+  toolsPanel.append(confirmBtn, editBtn, deleteBtn);
 
   if (!moreInfoForm.classList.contains("hide")) {
     infoBtn = document.createElement("button");
     infoBtn.classList.add("more");
     infoBtn.innerHTML = '<i class="fa-solid fa-info  fa-lg fa-fw"></i>';
+    infoBtn.addEventListener("click", showMoreInfo);
     toolsPanel.append(infoBtn);
   }
 };
 
-// const showMoreInfo = () => {
-//   const dropdownList = document.createElement('div');
-//   liItem.append(dropdownList);
-//   dropdownList.textContent = moreInfoForm.value;
-// }
+const showMoreInfo = () => {
+  const dropdownList = document.createElement("div");
+  dropdownList.classList.add("details");
+  dropdownList.classList.add("hide");
+  liItem.append(dropdownList);
+  dropdownList.textContent = taskDate.value;
+  dropdownList.classList.toggle("hide");
+};
 
 moreInfoCheck.addEventListener("click", showMore);
-addBtn.addEventListener("click", elementCalls);
-// infoBtn.addEventListener('click', showMoreInfo);
+addBtn.addEventListener("click", addTask);
 // TODO: sprawdzić konwencje nazewnictwa id
+
+// document.getElementById('task-date') = new Date().toLocaleDateString()

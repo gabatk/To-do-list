@@ -1,7 +1,9 @@
-html {
+html,
+body {
     margin: 0;
     padding: 0;
     height: 100%;
+    width: 100%;
 }
 
 .all {
@@ -54,6 +56,7 @@ h2 {
 
 .liElement {
     display: flex;
+    flex-wrap: wrap;
     position: relative;
     padding-top: 5px;
     padding-bottom: 5px;
@@ -63,6 +66,8 @@ h2 {
     margin-left: 5%;
     border-radius: 20px;
     font-size: large;
+    line-height: 150%;
+
 
 }
 
@@ -90,15 +95,7 @@ h2 {
     border: none;
 }
 
-.more {
-    position: absolute;
-    left: 95%;
-    background-color: transparent;
-    border: none;
-}
-
-
-
-.more:hover {
-    color: rgb(212, 84, 212)
+.details {
+    width: 100%;
+    text-align: left;
 }

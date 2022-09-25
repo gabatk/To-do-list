@@ -15,6 +15,7 @@ let confirmBtn;
 let editBtn;
 let deleteBtn;
 let infoBtn;
+let dropdownList;
 
 const colorDict = {
   Entertainment: "rgb(133, 130, 179)",
@@ -54,6 +55,10 @@ const addTask = () => {
     liItem.style.backgroundColor = colorDict[taskCategory.value];
     liItem.classList.add("liElement");
     liItem.textContent = taskContent.value;
+  }
+
+  if (!moreInfoForm.classList.contains("hide")) {
+    addMoreInfoArea();
   }
 
   createCategoryArea();
@@ -101,12 +106,15 @@ const createToolsArea = () => {
   }
 };
 
-const showMoreInfo = () => {
-  const dropdownList = document.createElement("div");
+const addMoreInfoArea = () => {
+  dropdownList = document.createElement("div");
   dropdownList.classList.add("details");
   dropdownList.classList.add("hide");
   liItem.append(dropdownList);
   dropdownList.textContent = taskDate.value;
+};
+
+const showMoreInfo = () => {
   dropdownList.classList.toggle("hide");
 };
 

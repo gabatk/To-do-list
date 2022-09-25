@@ -68,7 +68,7 @@ h2 {
 
 .tools {
     position: absolute;
-    left: 85%;
+    left: 83%;
 }
 
 .tools>button {
@@ -82,12 +82,19 @@ h2 {
 
 .category {
     position: absolute;
-    left: 75%
+    left: 73%
 }
 
 .categoryButton {
     background-color: transparent;
     border: none;
+}
 
+.more {
+    position: absolute;
+    left: 96%;
+}
 
+.more:hover {
+    color: rgb(212, 84, 212)
 }

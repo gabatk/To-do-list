@@ -36,32 +36,30 @@ const validateForm = () => {
   document.getElementById("form-alert").innerHTML = text;
 };
 
+let liItem;
+
 const addTask = () => {
   validateForm();
 
   if (text === "") {
-    const liItem = document.createElement("li");
+    liItem = document.createElement("li");
     liItem.style.backgroundColor = colorDict[taskCategory.value];
     liItem.classList.add("liElement");
     liItem.textContent = taskContent.value;
-    // createToolsArea(liItem);
-    createCategoryArea(liItem);
-    createToolsArea(liItem);
-    ulList.append(liItem);
   }
+};
+
+const elementCalls = () => {
+  addTask();
+
+  createCategoryArea(liItem);
+  createToolsArea(liItem);
+  additionalInfo(liItem);
+  ulList.append(liItem);
 
   taskContent.value = "";
   taskCategory.value = notDefinedValue;
 };
-
-// const additionalInfo = () => {
-//   if(moreInfoForm.classList.contains('hide')){
-//     return
-//   } else {
-//     taskDate.value = new Date().toLocaleDateString()
-//   }
-
-// }
 
 const createCategoryArea = (category) => {
   const categoryArea = document.createElement("div");
@@ -92,7 +90,16 @@ const createToolsArea = (tools) => {
   toolsPanel.append(confirmIcon, editIcon, deleteIcon);
 };
 
+const additionalInfo = (info) => {
+  if (!moreInfoForm.classList.contains("hide")) {
+    const moreInfo = document.createElement("div");
+    moreInfo.classList.add("more");
+    moreInfo.innerHTML = '<i class="fa-solid fa-info"></i>';
+    info.append(moreInfo);
+  }
+};
+
 moreInfoCheck.addEventListener("click", showMore);
-addBtn.addEventListener("click", addTask);
+addBtn.addEventListener("click", elementCalls);
 
 // TODO: sprawdzić konwencje nazewnictwa id

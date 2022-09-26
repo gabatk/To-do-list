@@ -90,6 +90,7 @@ const createToolsArea = () => {
   deleteBtn = document.createElement("button");
   deleteBtn.classList.add("delete");
   deleteBtn.innerHTML = '<i class="fa-solid fa-xmark icon fa-lg fa-fw"></i>';
+  // deleteBtn.addEventListener("click", () => {((deleteBtn.parentElement).parentElement).remove()});
 
   toolsPanel.append(confirmBtn, editBtn, deleteBtn);
 
@@ -101,6 +102,10 @@ const createToolsArea = () => {
     toolsPanel.append(infoBtn);
   }
 };
+
+// const deleteTask = () => {
+//   liItem.remove()
+// };
 
 const addMoreInfoArea = () => {
   dropdownList = document.createElement("div");
@@ -124,13 +129,9 @@ const taskDone = () => {
   const taskCompleted = liItem.classList.add("completed");
   alert("Task completed!");
 };
-// const deleteTask = {
-//   liItem.remove()
-// }
 
 moreInfoCheck.addEventListener("click", showMore);
 addBtn.addEventListener("click", addTask);
-// deleteBtn.addEventListener("click", deleteTask);
 
 // TODO: sprawdzić konwencje nazewnictwa id
 

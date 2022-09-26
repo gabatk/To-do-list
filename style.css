@@ -99,3 +99,8 @@ h2 {
     font-size: medium;
     line-height: 40%
 }
+
+.completed {
+    text-decoration: line-through;
+    color: #07b34f
+}

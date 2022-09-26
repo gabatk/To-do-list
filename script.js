@@ -25,11 +25,6 @@ const colorDict = {
   Other: "rgb(158, 182, 230)",
 };
 
-const main = () => {
-  prepareDOMElements();
-  prepareDOMEvents();
-};
-
 const showMore = () => {
   moreInfoForm.classList.toggle("hide");
 };
@@ -85,6 +80,7 @@ const createToolsArea = () => {
   confirmBtn = document.createElement("button");
   confirmBtn.classList.add("confirm");
   confirmBtn.innerHTML = '<i class="fa-solid fa-check icon fa-lg fa-fw"></i>';
+  confirmBtn.addEventListener("click", taskDone);
 
   editBtn = document.createElement("button");
   editBtn.classList.add("edit");
@@ -112,21 +108,30 @@ const addMoreInfoArea = () => {
   dropdownList.classList.add("hide");
   liItem.append(dropdownList);
   const dropdownListDate = document.createElement("p");
-  dropdownListDate.textContent = "Task Date: " + taskDate.value
+  dropdownListDate.textContent = "Task Date: " + taskDate.value;
   const dropdownListTime = document.createElement("p");
-  dropdownListTime.textContent = "Task Time: " + taskTime.value
+  dropdownListTime.textContent = "Task Time: " + taskTime.value;
   const dropdownListMsg = document.createElement("p");
-  dropdownListMsg.textContent = "Additional info: " + extraMsg.value
+  dropdownListMsg.textContent = "Additional info: " + extraMsg.value;
   dropdownList.append(dropdownListDate, dropdownListTime, dropdownListMsg);
-  
 };
 
 const showMoreInfo = () => {
   dropdownList.classList.toggle("hide");
 };
 
+const taskDone = () => {
+  const taskCompleted = liItem.classList.add("completed");
+  alert("Task completed!");
+};
+// const deleteTask = {
+//   liItem.remove()
+// }
+
 moreInfoCheck.addEventListener("click", showMore);
 addBtn.addEventListener("click", addTask);
+// deleteBtn.addEventListener("click", deleteTask);
+
 // TODO: sprawdzić konwencje nazewnictwa id
 
 // document.getElementById('task-date') = new Date().toLocaleDateString()

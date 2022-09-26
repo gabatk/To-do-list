@@ -49,8 +49,10 @@ const addTask = () => {
     liItem = document.createElement("li");
     liItem.style.backgroundColor = colorDict[taskCategory.value];
     liItem.classList.add("liElement");
+    // liItem.setAttribute('id', ulList)
     liItem.textContent = taskContent.value;
   }
+
 
   if (!moreInfoForm.classList.contains("hide")) {
     addMoreInfoArea();

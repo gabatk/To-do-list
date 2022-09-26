@@ -67,8 +67,6 @@ h2 {
     border-radius: 20px;
     font-size: large;
     line-height: 150%;
-
-
 }
 
 .tools {
@@ -98,4 +96,6 @@ h2 {
 .details {
     width: 100%;
     text-align: left;
+    font-size: medium;
+    line-height: 40%
 }

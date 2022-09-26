@@ -111,7 +111,14 @@ const addMoreInfoArea = () => {
   dropdownList.classList.add("details");
   dropdownList.classList.add("hide");
   liItem.append(dropdownList);
-  dropdownList.textContent = taskDate.value;
+  const dropdownListDate = document.createElement("p");
+  dropdownListDate.textContent = "Task Date: " + taskDate.value
+  const dropdownListTime = document.createElement("p");
+  dropdownListTime.textContent = "Task Time: " + taskTime.value
+  const dropdownListMsg = document.createElement("p");
+  dropdownListMsg.textContent = "Additional info: " + extraMsg.value
+  dropdownList.append(dropdownListDate, dropdownListTime, dropdownListMsg);
+  
 };
 
 const showMoreInfo = () => {

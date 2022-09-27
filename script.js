@@ -16,6 +16,7 @@ let editBtn;
 let deleteBtn;
 let infoBtn;
 let dropdownList;
+let liCount;
 
 const colorDict = {
   Entertainment: "rgb(133, 130, 179)",
@@ -42,6 +43,8 @@ const validateForm = () => {
   document.getElementById("form-alert").innerHTML = text;
 };
 
+let counter = -1;
+
 const addTask = () => {
   validateForm();
 
@@ -49,10 +52,11 @@ const addTask = () => {
     liItem = document.createElement("li");
     liItem.style.backgroundColor = colorDict[taskCategory.value];
     liItem.classList.add("liElement");
-    // liItem.setAttribute('id', ulList)
     liItem.textContent = taskContent.value;
-  }
 
+    counter++;
+    liItem.setAttribute("id", counter);
+  }
 
   if (!moreInfoForm.classList.contains("hide")) {
     addMoreInfoArea();
@@ -82,17 +86,20 @@ const createToolsArea = () => {
   confirmBtn = document.createElement("button");
   confirmBtn.classList.add("confirm");
   confirmBtn.innerHTML = '<i class="fa-solid fa-check icon fa-lg fa-fw"></i>';
-  confirmBtn.addEventListener("click", taskDone);
+  confirmBtn.setAttribute("id", counter);
+  confirmBtn.addEventListener("click", taskDone)
 
   editBtn = document.createElement("button");
   editBtn.classList.add("edit");
   editBtn.innerHTML =
     '<i class="fa-solid fa-pen-to-square icon fa-lg fa-fw"></i>';
+  editBtn.setAttribute("id", counter);
 
   deleteBtn = document.createElement("button");
   deleteBtn.classList.add("delete");
   deleteBtn.innerHTML = '<i class="fa-solid fa-xmark icon fa-lg fa-fw"></i>';
-  // deleteBtn.addEventListener("click", () => {((deleteBtn.parentElement).parentElement).remove()});
+  deleteBtn.setAttribute("id", counter);
+  deleteBtn.addEventListener("click", removeTask);
 
   toolsPanel.append(confirmBtn, editBtn, deleteBtn);
 
@@ -104,10 +111,6 @@ const createToolsArea = () => {
     toolsPanel.append(infoBtn);
   }
 };
-
-// const deleteTask = () => {
-//   liItem.remove()
-// };
 
 const addMoreInfoArea = () => {
   dropdownList = document.createElement("div");
@@ -127,10 +130,23 @@ const showMoreInfo = () => {
   dropdownList.classList.toggle("hide");
 };
 
-const taskDone = () => {
-  const taskCompleted = liItem.classList.add("completed");
-  alert("Task completed!");
+const taskDone = (e) => {
+const liLine = e.target.closest('li')
+liLine.classList.add("completed");
 };
+
+const removeTask = (e) => {
+  e.target.closest('li').remove()
+}
+
+// const editTask = (e) => {
+//   console.log(e.target.closest('li'))
+// }
+// }
+
+
+// ulList.addEventListener('click', editTask)
+
 
 moreInfoCheck.addEventListener("click", showMore);
 addBtn.addEventListener("click", addTask);

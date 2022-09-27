@@ -92,7 +92,7 @@ const createToolsArea = () => {
   confirmBtn.classList.add("confirm");
   confirmBtn.innerHTML = '<i class="fa-solid fa-check icon fa-lg fa-fw"></i>';
   confirmBtn.setAttribute("id", counter);
-  confirmBtn.addEventListener("click", taskDone)
+  confirmBtn.addEventListener("click", taskDone);
 
   editBtn = document.createElement("button");
   editBtn.classList.add("edit");
@@ -136,13 +136,13 @@ const showMoreInfo = () => {
 };
 
 const taskDone = (e) => {
-const liLine = e.target.closest('li')
-liLine.classList.add("completed");
+  const liLine = e.target.closest("li");
+  liLine.classList.add("completed");
 };
 
 const removeTask = (e) => {
-  e.target.closest('li').remove()
-}
+  e.target.closest("li").remove();
+};
 
 // const editTask = (e) => {
 //   console.log(e.target.closest('li'))
@@ -150,15 +150,14 @@ const removeTask = (e) => {
 // }
 
 const editWindowOpen = () => {
-  popupEl.style.display = 'flex'
-}
+  popupEl.style.display = "flex";
+};
 
 const editWindowClose = () => {
-  popupEl.style.display = 'none'
-}
+  popupEl.style.display = "none";
+};
 
-editWindowOpen()
-
+editWindowOpen();
 
 // ulList.addEventListener('click', editTask)
 

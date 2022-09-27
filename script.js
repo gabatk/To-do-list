@@ -7,6 +7,11 @@ const ulList = document.querySelector(".task-list");
 const taskDate = document.querySelector("#task-date");
 const taskTime = document.querySelector("#hour");
 const extraMsg = document.querySelector("#extra-message");
+const popupEl = document.querySelector(".popup");
+const popupInfo = document.querySelector(".popup-info");
+const popupInput = document.querySelector(".popup-input");
+const acceptBtn = document.querySelector(".accept");
+const cancelBtn = document.querySelector(".cancel");
 
 const notDefinedValue = "Not defined";
 let text;
@@ -144,9 +149,18 @@ const removeTask = (e) => {
 // }
 // }
 
+const editWindowOpen = () => {
+  popupEl.style.display = 'flex'
+}
+
+const editWindowClose = () => {
+  popupEl.style.display = 'none'
+}
+
+editWindowOpen()
+
 
 // ulList.addEventListener('click', editTask)
-
 
 moreInfoCheck.addEventListener("click", showMore);
 addBtn.addEventListener("click", addTask);

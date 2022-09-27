@@ -104,3 +104,61 @@ h2 {
     text-decoration: line-through;
     color: #07b34f
 }
+
+.popup {
+    display: none;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 800px;
+    background-color: rgba(232, 221, 232, 0.466);
+    border-radius: 5px;
+}
+
+.popup h3 {
+    padding: 20px;
+    color: rgb(85, 8, 85);
+}
+
+.popup-info {
+    color: rgb(85, 8, 85);
+    margin-bottom: 20px;
+}
+
+.popup-body {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    width: 90%;
+    padding: 10px;
+}
+
+.popup-input {
+    width: 100%;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    color: rgb(85, 8, 85);
+    
+}
+
+.popup-btn {
+    width: 30%;
+    display: inline-block;
+    padding: 10px 22px;
+    margin: 20px;
+    border: none;
+    border-radius: 5px;
+    background-color: rgb(189, 164, 189);
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: color .3s, background-color .3s;
+}
+
+.popup-btn:hover {
+     background-color: rgb(224, 193, 224);
+}

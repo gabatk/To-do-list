@@ -99,6 +99,7 @@ const createToolsArea = () => {
   editBtn.innerHTML =
     '<i class="fa-solid fa-pen-to-square icon fa-lg fa-fw"></i>';
   editBtn.setAttribute("id", counter);
+  editBtn.addEventListener("click", editTask);
 
   deleteBtn = document.createElement("button");
   deleteBtn.classList.add("delete");
@@ -144,11 +145,6 @@ const removeTask = (e) => {
   e.target.closest("li").remove();
 };
 
-// const editTask = (e) => {
-//   console.log(e.target.closest('li'))
-// }
-// }
-
 const editWindowOpen = () => {
   popupEl.style.display = "flex";
 };
@@ -157,12 +153,28 @@ const editWindowClose = () => {
   popupEl.style.display = "none";
 };
 
-editWindowOpen();
+let editedContent;
 
-// ulList.addEventListener('click', editTask)
+const editTask = (e) => {
+  editedContent = e.target.closest("li");
+  editWindowOpen();
+};
+
+const acceptTask = (e) => {
+  if (popupInput.value === "") {
+    popupInfo.textContent = "Please type task content!";
+  } else {
+    editedContent.firstChild.textContent = popupInput.value;
+    editWindowClose();
+    popupInfo.textContent = "";
+    popupInput.value = "";
+  }
+};
 
 moreInfoCheck.addEventListener("click", showMore);
 addBtn.addEventListener("click", addTask);
+cancelBtn.addEventListener("click", editWindowClose);
+acceptBtn.addEventListener("click", acceptTask);
 
 // TODO: sprawdzić konwencje nazewnictwa id
 

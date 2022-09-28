@@ -115,7 +115,7 @@ h2 {
     left: 50%;
     transform: translateX(-50%);
     width: 800px;
-    background-color: rgba(232, 221, 232, 0.466);
+    background-color: rgb(232, 221, 232);
     border-radius: 5px;
 }
 
@@ -161,4 +161,8 @@ h2 {
 
 .popup-btn:hover {
     background-color: rgb(224, 193, 224);
+}
+
+.edit-info{
+    line-height: 50px;
 }

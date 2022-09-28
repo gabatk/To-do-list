@@ -92,6 +92,37 @@
             class="popup-input"
             placeholder="Please enter new task content"
           />
+          <div class="edit-info">
+            <div>
+              <label for="edit-date">Task date:</label>
+              <input
+                type="date"
+                id="edit-date"
+                name="task-start"
+                min="2022-01-01"
+                max="2027-12-31"
+              />
+            </div>
+            <div>
+              <label for="edit-hour">Choose a time for your task:</label>
+              <input
+                type="time"
+                id="edit-hour"
+                name="task-time"
+                min="09:00"
+                max="18:00"
+                required
+              />
+            </div>
+            <div>
+            <textarea
+              id="edit-message"
+              rows="4"
+              cols="50"
+              placeholder="Additional information:"
+            ></textarea>
+            <div>
+          </div>
           <button class="popup-btn accept">Accept</button>
           <button class="popup-btn cancel">Cancel</button>
         </div>

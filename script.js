@@ -12,6 +12,9 @@ const popupInfo = document.querySelector(".popup-info");
 const popupInput = document.querySelector(".popup-input");
 const acceptBtn = document.querySelector(".accept");
 const cancelBtn = document.querySelector(".cancel");
+const editDate = document.querySelector(".edit-date");
+const editHour = document.querySelector(".edit-hour");
+const editMsg = document.querySelector(".edit-message");
 
 const notDefinedValue = "Not defined";
 let text;
@@ -22,6 +25,7 @@ let deleteBtn;
 let infoBtn;
 let dropdownList;
 let liCount;
+let counter = -1;
 
 const colorDict = {
   Entertainment: "rgb(133, 130, 179)",
@@ -47,8 +51,6 @@ const validateForm = () => {
 
   document.getElementById("form-alert").innerHTML = text;
 };
-
-let counter = -1;
 
 const addTask = () => {
   validateForm();
@@ -158,6 +160,10 @@ let editedContent;
 const editTask = (e) => {
   editedContent = e.target.closest("li");
   editWindowOpen();
+
+  // editDate.value = taskDate.value;
+  // editHour.value = taskTime.value;
+  // editMsg.value = taskMsg.value;
 };
 
 const acceptTask = (e) => {

@@ -132,14 +132,14 @@ const addMoreInfoArea = () => {
   liItem.append(dropdownList);
 
   const dropdownListDate = document.createElement("p");
-  taskDateValue = taskDate.value;
-  dropdownListDate.textContent = "Task Date: " + taskDateValue;
+  dropdownListDate.classList.add("date");
+  dropdownListDate.textContent = "Task Date: " + taskDate.value;
   const dropdownListTime = document.createElement("p");
-  taskTimeValue = taskTime.value;
-  dropdownListTime.textContent = "Task Time: " + taskTimeValue;
+  dropdownListTime.classList.add("time");
+  dropdownListTime.textContent = "Task Time: " + taskTime.value;
   const dropdownListMsg = document.createElement("p");
-  extraMsgValue = extraMsg.value;
-  dropdownListMsg.textContent = "Additional info: " + extraMsgValue;
+  dropdownListMsg.classList.add("message");
+  dropdownListMsg.textContent = "Additional info: " + extraMsg.value;
   dropdownList.append(dropdownListDate, dropdownListTime, dropdownListMsg);
 
   // moreInfoCheck.checked = false;
@@ -171,13 +171,26 @@ const editTask = (e) => {
   editedContent = e.target.closest("li");
   editWindowOpen();
 
-  editDate.value = taskDateValue;
-  editHour.value = taskTimeValue;
-  editMsg.value = extraMsgValue;
+  // editDate.value = editedContent.getElementsByClassName('date')
+  // editHour.value = editedContent.getElementsByClassName('time')
+  // editMsg.value = editedContent.getElementsByClassName('message)[0].value
+
   popupInput.value = editedContent.firstChild.textContent;
   if (!editedContent.getElementsByClassName("details")[0]) {
     editInfoArea.style.display = "none";
   } else {
+    const editedDateText =
+      editedContent.getElementsByClassName("date")[0].textContent;
+    editDate.value = editedDateText.replace("Task Date: ", "");
+
+    const editedTimeText =
+      editedContent.getElementsByClassName("time")[0].textContent;
+    editHour.value = editedTimeText.replace("Task Time: ", "");
+
+    const editedMsgText =
+      editedContent.getElementsByClassName("message")[0].textContent;
+    editMsg.value = editedMsgText.replace("Additional info: ", "");
+
     editInfoArea.style.display = "inline";
   }
 };

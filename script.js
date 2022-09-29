@@ -125,19 +125,24 @@ const createToolsArea = () => {
   }
 };
 
+let dropdownListDate
+let dropdownListTime
+let dropdownListMsg
+
 const addMoreInfoArea = () => {
   dropdownList = document.createElement("div");
   dropdownList.classList.add("details");
   dropdownList.classList.add("hide");
   liItem.append(dropdownList);
 
-  const dropdownListDate = document.createElement("p");
+  dropdownListDate = document.createElement("p");
   dropdownListDate.classList.add("date");
+  dropdownListDate.createElement("label")
   dropdownListDate.textContent = "Task Date: " + taskDate.value;
-  const dropdownListTime = document.createElement("p");
+  dropdownListTime = document.createElement("p");
   dropdownListTime.classList.add("time");
   dropdownListTime.textContent = "Task Time: " + taskTime.value;
-  const dropdownListMsg = document.createElement("p");
+  dropdownListMsg = document.createElement("p");
   dropdownListMsg.classList.add("message");
   dropdownListMsg.textContent = "Additional info: " + extraMsg.value;
   dropdownList.append(dropdownListDate, dropdownListTime, dropdownListMsg);
@@ -197,6 +202,9 @@ const editTask = (e) => {
 
 const acceptTask = (e) => {
   editedContent.firstChild.textContent = popupInput.value;
+  editedContent.firstChild.textContent = editDate.value;
+  editedContent.firstChild.textContent = editHour.value;
+  editedContent.firstChild.textContent = editMsg.value;
   editWindowClose();
   popupInfo.textContent = "";
   popupInput.value = "";

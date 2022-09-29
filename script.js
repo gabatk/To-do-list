@@ -12,9 +12,10 @@ const popupInfo = document.querySelector(".popup-info");
 const popupInput = document.querySelector(".popup-input");
 const acceptBtn = document.querySelector(".accept");
 const cancelBtn = document.querySelector(".cancel");
-const editDate = document.querySelector(".edit-date");
-const editHour = document.querySelector(".edit-hour");
-const editMsg = document.querySelector(".edit-message");
+const editDate = document.querySelector("#edit-date");
+const editHour = document.querySelector("#edit-hour");
+const editMsg = document.querySelector("#edit-message");
+const editInfoArea = document.querySelector(".edit-info");
 
 const notDefinedValue = "Not defined";
 let text;
@@ -25,6 +26,10 @@ let deleteBtn;
 let infoBtn;
 let dropdownList;
 let liCount;
+let editedContent;
+let taskDateValue;
+let taskTimeValue;
+let extraMsgValue;
 let counter = -1;
 
 const colorDict = {
@@ -125,13 +130,20 @@ const addMoreInfoArea = () => {
   dropdownList.classList.add("details");
   dropdownList.classList.add("hide");
   liItem.append(dropdownList);
+
   const dropdownListDate = document.createElement("p");
-  dropdownListDate.textContent = "Task Date: " + taskDate.value;
+  taskDateValue = taskDate.value;
+  dropdownListDate.textContent = "Task Date: " + taskDateValue;
   const dropdownListTime = document.createElement("p");
-  dropdownListTime.textContent = "Task Time: " + taskTime.value;
+  taskTimeValue = taskTime.value;
+  dropdownListTime.textContent = "Task Time: " + taskTimeValue;
   const dropdownListMsg = document.createElement("p");
-  dropdownListMsg.textContent = "Additional info: " + extraMsg.value;
+  extraMsgValue = extraMsg.value;
+  dropdownListMsg.textContent = "Additional info: " + extraMsgValue;
   dropdownList.append(dropdownListDate, dropdownListTime, dropdownListMsg);
+
+  // moreInfoCheck.checked = false;
+  // moreInfoForm.classList.add("hide");
 };
 
 const showMoreInfo = () => {
@@ -155,26 +167,26 @@ const editWindowClose = () => {
   popupEl.style.display = "none";
 };
 
-let editedContent;
-
 const editTask = (e) => {
   editedContent = e.target.closest("li");
   editWindowOpen();
 
-  // editDate.value = taskDate.value;
-  // editHour.value = taskTime.value;
-  // editMsg.value = taskMsg.value;
+  editDate.value = taskDateValue;
+  editHour.value = taskTimeValue;
+  editMsg.value = extraMsgValue;
+  popupInput.value = editedContent.firstChild.textContent;
+  if (!editedContent.getElementsByClassName("details")[0]) {
+    editInfoArea.style.display = "none";
+  } else {
+    editInfoArea.style.display = "inline";
+  }
 };
 
 const acceptTask = (e) => {
-  if (popupInput.value === "") {
-    popupInfo.textContent = "Please type task content!";
-  } else {
-    editedContent.firstChild.textContent = popupInput.value;
-    editWindowClose();
-    popupInfo.textContent = "";
-    popupInput.value = "";
-  }
+  editedContent.firstChild.textContent = popupInput.value;
+  editWindowClose();
+  popupInfo.textContent = "";
+  popupInput.value = "";
 };
 
 moreInfoCheck.addEventListener("click", showMore);

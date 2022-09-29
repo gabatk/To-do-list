@@ -163,6 +163,7 @@ h2 {
     background-color: rgb(224, 193, 224);
 }
 
-.edit-info{
+.edit-info {
     line-height: 50px;
+    width: 100%;
 }

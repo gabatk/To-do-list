@@ -17,7 +17,12 @@ const editHour = document.querySelector("#edit-hour");
 const editMsg = document.querySelector("#edit-message");
 const editInfoArea = document.querySelector(".edit-info");
 
+// taskDate.value = new Date().toLocaleDateString();
+
 const notDefinedValue = "Not defined";
+const taskDateLabel = "Task Date: ";
+const taskTimeLabel = "Task Time: ";
+const extraMgsLabel = "Additional info: ";
 let text;
 let liItem;
 let confirmBtn;
@@ -31,6 +36,9 @@ let taskDateValue;
 let taskTimeValue;
 let extraMsgValue;
 let counter = -1;
+let dropdownListDate;
+let dropdownListTime;
+let dropdownListMsg;
 
 const colorDict = {
   Entertainment: "rgb(133, 130, 179)",
@@ -68,16 +76,27 @@ const addTask = () => {
 
     counter++;
     liItem.setAttribute("id", counter);
+
+    if (!moreInfoForm.classList.contains("hide")) {
+      addMoreInfoArea();
+    }
+
+    createCategoryArea();
+    createToolsArea();
+    ulList.append(liItem);
   }
 
+  cleanForm();
+};
+
+const cleanForm = () => {
   if (!moreInfoForm.classList.contains("hide")) {
-    addMoreInfoArea();
+    moreInfoCheck.checked = false;
+    showMore();
   }
-
-  createCategoryArea();
-  createToolsArea();
-  ulList.append(liItem);
-
+  taskDateValue = "";
+  taskTimeValue = "";
+  extraMsgValue = "";
   taskContent.value = "";
   taskCategory.value = notDefinedValue;
 };
@@ -125,13 +144,6 @@ const createToolsArea = () => {
   }
 };
 
-let dropdownListDate
-let dropdownListTime
-let dropdownListMsg
-const taskDateLabel = "Task Date: "
-const taskTimeLabel =  "Task Time: " 
-const extraMgsLabel = "Additional info: "  
-
 const addMoreInfoArea = () => {
   dropdownList = document.createElement("div");
   dropdownList.classList.add("details");
@@ -140,7 +152,7 @@ const addMoreInfoArea = () => {
 
   dropdownListDate = document.createElement("p");
   dropdownListDate.classList.add("date");
-  dropdownListDate.textContent =  taskDateLabel + taskDate.value;
+  dropdownListDate.textContent = taskDateLabel + taskDate.value;
 
   dropdownListTime = document.createElement("p");
   dropdownListTime.classList.add("time");
@@ -151,13 +163,14 @@ const addMoreInfoArea = () => {
 
   dropdownListMsg.textContent = extraMgsLabel + extraMsg.value;
   dropdownList.append(dropdownListDate, dropdownListTime, dropdownListMsg);
-
-  // moreInfoCheck.checked = false;
-  // moreInfoForm.classList.add("hide");
 };
 
-const showMoreInfo = () => {
-  dropdownList.classList.toggle("hide");
+const showMoreInfo = (e) => {
+  const shownLi = e.target.closest("li");
+
+  console.log(shownLi.getElementsByClassName("details")[0]);
+  const details = shownLi.getElementsByClassName("details")[0];
+  details.classList.toggle("hide");
 };
 
 const taskDone = (e) => {
@@ -201,13 +214,14 @@ const editTask = (e) => {
   }
 };
 
-const acceptTask = (e) => {
-  editedContent.textContent = popupInput.value;
- 
-  dropdownListDate.textContent = taskDateLabel + editDate.value
-  dropdownListTime.textContent = taskTimeLabel + editHour.value
-  dropdownListMsg.textContent = extraMgsLabel + editMsg.value
-  
+const acceptTask = () => {
+  console.log(editedContent);
+  editedContent.firstChild.textContent = popupInput.value;
+
+  dropdownListDate.textContent = taskDateLabel + editDate.value;
+  dropdownListTime.textContent = taskTimeLabel + editHour.value;
+  dropdownListMsg.textContent = extraMgsLabel + editMsg.value;
+
   editWindowClose();
   popupInfo.textContent = "";
   popupInput.value = "";
@@ -219,5 +233,3 @@ cancelBtn.addEventListener("click", editWindowClose);
 acceptBtn.addEventListener("click", acceptTask);
 
 // TODO: sprawdzić konwencje nazewnictwa id
-
-// document.getElementById('task-date') = new Date().toLocaleDateString()

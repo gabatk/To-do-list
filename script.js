@@ -128,6 +128,9 @@ const createToolsArea = () => {
 let dropdownListDate
 let dropdownListTime
 let dropdownListMsg
+const taskDateLabel = "Task Date: "
+const taskTimeLabel =  "Task Time: " 
+const extraMgsLabel = "Additional info: "  
 
 const addMoreInfoArea = () => {
   dropdownList = document.createElement("div");
@@ -137,14 +140,16 @@ const addMoreInfoArea = () => {
 
   dropdownListDate = document.createElement("p");
   dropdownListDate.classList.add("date");
-  dropdownListDate.createElement("label")
-  dropdownListDate.textContent = "Task Date: " + taskDate.value;
+  dropdownListDate.textContent =  taskDateLabel + taskDate.value;
+
   dropdownListTime = document.createElement("p");
   dropdownListTime.classList.add("time");
-  dropdownListTime.textContent = "Task Time: " + taskTime.value;
+
+  dropdownListTime.textContent = taskTimeLabel + taskTime.value;
   dropdownListMsg = document.createElement("p");
   dropdownListMsg.classList.add("message");
-  dropdownListMsg.textContent = "Additional info: " + extraMsg.value;
+
+  dropdownListMsg.textContent = extraMgsLabel + extraMsg.value;
   dropdownList.append(dropdownListDate, dropdownListTime, dropdownListMsg);
 
   // moreInfoCheck.checked = false;
@@ -176,10 +181,6 @@ const editTask = (e) => {
   editedContent = e.target.closest("li");
   editWindowOpen();
 
-  // editDate.value = editedContent.getElementsByClassName('date')
-  // editHour.value = editedContent.getElementsByClassName('time')
-  // editMsg.value = editedContent.getElementsByClassName('message)[0].value
-
   popupInput.value = editedContent.firstChild.textContent;
   if (!editedContent.getElementsByClassName("details")[0]) {
     editInfoArea.style.display = "none";
@@ -201,10 +202,12 @@ const editTask = (e) => {
 };
 
 const acceptTask = (e) => {
-  editedContent.firstChild.textContent = popupInput.value;
-  editedContent.firstChild.textContent = editDate.value;
-  editedContent.firstChild.textContent = editHour.value;
-  editedContent.firstChild.textContent = editMsg.value;
+  editedContent.textContent = popupInput.value;
+ 
+  dropdownListDate.textContent = taskDateLabel + editDate.value
+  dropdownListTime.textContent = taskTimeLabel + editHour.value
+  dropdownListMsg.textContent = extraMgsLabel + editMsg.value
+  
   editWindowClose();
   popupInfo.textContent = "";
   popupInput.value = "";

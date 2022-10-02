@@ -17,8 +17,6 @@ const editHour = document.querySelector("#edit-hour");
 const editMsg = document.querySelector("#edit-message");
 const editInfoArea = document.querySelector(".edit-info");
 
-// taskDate.value = new Date().toLocaleDateString();
-
 const notDefinedValue = "Not defined";
 const taskDateLabel = "Task Date: ";
 const taskTimeLabel = "Task Time: ";
@@ -32,20 +30,17 @@ let infoBtn;
 let dropdownList;
 let liCount;
 let editedContent;
-let taskDateValue;
-let taskTimeValue;
-let extraMsgValue;
 let counter = -1;
-let dropdownListDate;
-let dropdownListTime;
-let dropdownListMsg;
+let editedDateText;
+let editedTimeText;
+let editedMsgText;
 
 const colorDict = {
-  Entertainment: "rgb(133, 130, 179)",
-  Health: "rgb(212, 190, 200)",
-  "Household duties": "rgb(178, 200, 214)",
-  "Physical activity": "rgb(190, 196, 252)",
-  Other: "rgb(158, 182, 230)",
+  Entertainment: "rgb(133, 130, 179, 0.85)",
+  Health: "rgb(212, 190, 200, 0.85)",
+  "Household duties": "rgb(178, 200, 214, 0.85)",
+  "Physical activity": "rgb(190, 196, 252, 0.85)",
+  Other: "rgb(158, 182, 230, 0.85)",
 };
 
 const showMore = () => {
@@ -94,9 +89,9 @@ const cleanForm = () => {
     moreInfoCheck.checked = false;
     showMore();
   }
-  taskDateValue = "";
-  taskTimeValue = "";
-  extraMsgValue = "";
+  taskDate.value = "";
+  taskTime.value = "";
+  extraMsg.value = "";
   taskContent.value = "";
   taskCategory.value = notDefinedValue;
 };
@@ -144,24 +139,25 @@ const createToolsArea = () => {
   }
 };
 
+
 const addMoreInfoArea = () => {
   dropdownList = document.createElement("div");
   dropdownList.classList.add("details");
   dropdownList.classList.add("hide");
   liItem.append(dropdownList);
 
-  dropdownListDate = document.createElement("p");
+  const dropdownListDate = document.createElement("p");
   dropdownListDate.classList.add("date");
   dropdownListDate.textContent = taskDateLabel + taskDate.value;
 
-  dropdownListTime = document.createElement("p");
+  const dropdownListTime = document.createElement("p");
   dropdownListTime.classList.add("time");
-
   dropdownListTime.textContent = taskTimeLabel + taskTime.value;
-  dropdownListMsg = document.createElement("p");
-  dropdownListMsg.classList.add("message");
 
+  const dropdownListMsg = document.createElement("p");
+  dropdownListMsg.classList.add("message");
   dropdownListMsg.textContent = extraMgsLabel + extraMsg.value;
+
   dropdownList.append(dropdownListDate, dropdownListTime, dropdownListMsg);
 };
 
@@ -198,33 +194,34 @@ const editTask = (e) => {
   if (!editedContent.getElementsByClassName("details")[0]) {
     editInfoArea.style.display = "none";
   } else {
-    const editedDateText =
-      editedContent.getElementsByClassName("date")[0].textContent;
-    editDate.value = editedDateText.replace("Task Date: ", "");
+    editedDateText = editedContent.getElementsByClassName("date")[0];
+    editDate.value = editedDateText.textContent.replace("Task Date: ", "");
 
-    const editedTimeText =
-      editedContent.getElementsByClassName("time")[0].textContent;
-    editHour.value = editedTimeText.replace("Task Time: ", "");
+    editedTimeText = editedContent.getElementsByClassName("time")[0];
+    editHour.value = editedTimeText.textContent.replace("Task Time: ", "");
 
-    const editedMsgText =
-      editedContent.getElementsByClassName("message")[0].textContent;
-    editMsg.value = editedMsgText.replace("Additional info: ", "");
+    editedMsgText = editedContent.getElementsByClassName("message")[0];
+    editMsg.value = editedMsgText.textContent.replace("Additional info: ", "");
 
     editInfoArea.style.display = "inline";
   }
 };
 
 const acceptTask = () => {
-  console.log(editedContent);
-  editedContent.firstChild.textContent = popupInput.value;
-
-  dropdownListDate.textContent = taskDateLabel + editDate.value;
-  dropdownListTime.textContent = taskTimeLabel + editHour.value;
-  dropdownListMsg.textContent = extraMgsLabel + editMsg.value;
-
-  editWindowClose();
-  popupInfo.textContent = "";
-  popupInput.value = "";
+  if (popupInput.value === "") {
+    popupInfo.textContent = "Please type task content!";
+  } else {
+    editedContent.firstChild.textContent = popupInput.value;
+    if (editedContent.getElementsByClassName("details")[0]) {
+      console.log(editedContent.getElementsByClassName("details")[0]);
+      editedDateText.textContent = taskDateLabel + editDate.value;
+      editedTimeText.textContent = taskTimeLabel + editHour.value;
+      editedMsgText.textContent = extraMgsLabel + editMsg.value;
+    }
+    editWindowClose();
+    popupInfo.textContent = "";
+    popupInput.value = "";
+  }
 };
 
 moreInfoCheck.addEventListener("click", showMore);
@@ -232,4 +229,10 @@ addBtn.addEventListener("click", addTask);
 cancelBtn.addEventListener("click", editWindowClose);
 acceptBtn.addEventListener("click", acceptTask);
 
-// TODO: sprawdzić konwencje nazewnictwa id
+// TODO: sprawdzić konwencje nazewnictwa itd
+
+
+
+//TODO: sprawdzić czy używamy gdzieś ID
+//usunąć console logi
+//

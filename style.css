@@ -14,14 +14,14 @@ body {
     border: 1px solid rgb(112, 109, 112);
     border-radius: 10px;
     box-shadow: 0px 0px 10px rgb(134, 129, 134);
-    background: linear-gradient(90deg, rgba(232, 221, 232, 1) 0%, rgba(255, 255, 255, 1) 50%, rgba(232, 221, 232, 1) 100%);
+    background: linear-gradient(90deg, rgba(240, 217, 195, 0.85) 0%, rgba(255, 255, 255, 1) 50%, rgba(240, 217, 195, 0.85) 100%)
 }
 
 header {
     padding: 1%;
     border-top-left-radius: 10px;
     border-top-right-radius: 10px;
-    color: rgb(99, 28, 99);
+    color: rgb(136, 82, 12);
 }
 
 .content {
@@ -42,7 +42,7 @@ header {
 }
 
 h2 {
-    color: rgb(99, 28, 99);
+    color: rgb(136, 82, 12);
 }
 
 .task-list {
@@ -75,7 +75,7 @@ h2 {
 }
 
 .tools>button:hover {
-    color: rgb(212, 84, 212)
+    color: rgb(136, 82, 12);
 }
 
 .category {
@@ -110,17 +110,17 @@ h2 {
     left: 50%;
     transform: translateX(-50%);
     width: 800px;
-    background-color: rgb(232, 221, 232);
+    background-color: rgba(211, 188, 158, 0.938);
     border-radius: 5px;
 }
 
 .popup h3 {
     padding: 20px;
-    color: rgb(85, 8, 85);
+    color: rgb(117, 67, 2);
 }
 
 .popup-info {
-    color: rgb(85, 8, 85);
+    color: rgb(117, 67, 2);
     margin-bottom: 20px;
 }
 
@@ -148,8 +148,7 @@ h2 {
     margin: 20px;
     border: none;
     border-radius: 5px;
-    background-color: rgb(189, 164, 189);
-    text-transform: uppercase;
+    background-color: rgb(161, 129, 87);
     cursor: pointer;
     transition: color .3s, background-color .3s;
 }
@@ -160,7 +159,7 @@ h2 {
 
 .popup-btn:hover,
 .add-task:hover {
-    background-color: rgb(224, 193, 224);
+    background-color: rgb(196, 161, 116);
 }
 
 .edit-info {
@@ -170,12 +169,18 @@ h2 {
 
 input,
 .form-control {
-    padding: 10px 15px;
+    padding: 10px 1px;
     margin: 1%;
     border: 1px solid rgb(112, 109, 112);
     border-radius: 5px;
-    /* background-color: rgb(206, 185, 206); */
-    text-transform: uppercase;
     cursor: pointer;
     transition: color .3s, background-color .3s;
+}
+
+.bg {
+    background-image: url("https://cdn.pixabay.com/photo/2018/11/17/07/10/notebook-3820634_960_720.jpg");
+    height: 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
 }

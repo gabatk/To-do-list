@@ -7,13 +7,14 @@ body {
 }
 
 .all {
+    margin-top: 3%;
     margin-left: 15%;
     margin-right: 15%;
     text-align: center;
     border: 1px solid rgb(112, 109, 112);
     border-radius: 10px;
     box-shadow: 0px 0px 10px rgb(134, 129, 134);
-    background: linear-gradient(90deg, rgba(232, 221, 232, 1) 0%, rgba(255, 255, 255, 1) 50%, rgba(232, 221, 232, 1) 100%)
+    background: linear-gradient(90deg, rgba(232, 221, 232, 1) 0%, rgba(255, 255, 255, 1) 50%, rgba(232, 221, 232, 1) 100%);
 }
 
 header {
@@ -34,12 +35,6 @@ header {
 
 .input-area {
     line-height: 30px;
-}
-
-.add-task:hover {
-    border-color: rgb(207, 117, 207);
-    background-color: rgb(207, 117, 207);
-
 }
 
 .hide {
@@ -140,13 +135,13 @@ h2 {
 .popup-input {
     width: 100%;
     padding: 10px 20px;
-    border: none;
+    border: 1px solid rgb(112, 109, 112);
     border-radius: 5px;
-    color: rgb(85, 8, 85);
 
 }
 
-.popup-btn {
+.popup-btn,
+.add-task {
     width: 30%;
     display: inline-block;
     padding: 10px 22px;
@@ -159,11 +154,28 @@ h2 {
     transition: color .3s, background-color .3s;
 }
 
-.popup-btn:hover {
+.add-task {
+    width: 10%;
+}
+
+.popup-btn:hover,
+.add-task:hover {
     background-color: rgb(224, 193, 224);
 }
 
 .edit-info {
     line-height: 50px;
     width: 100%;
+}
+
+input,
+.form-control {
+    padding: 10px 15px;
+    margin: 1%;
+    border: 1px solid rgb(112, 109, 112);
+    border-radius: 5px;
+    /* background-color: rgb(206, 185, 206); */
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: color .3s, background-color .3s;
 }

@@ -28,7 +28,6 @@ let editBtn;
 let deleteBtn;
 let infoBtn;
 let dropdownList;
-let liCount;
 let editedContent;
 let editedDateText;
 let editedTimeText;
@@ -222,5 +221,3 @@ moreInfoCheck.addEventListener("click", showMore);
 addBtn.addEventListener("click", addTask);
 cancelBtn.addEventListener("click", editWindowClose);
 acceptBtn.addEventListener("click", acceptTask);
-
-// TODO: sprawdzić konwencje nazewnictwa itd

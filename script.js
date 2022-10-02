@@ -1,7 +1,7 @@
-const moreInfoCheck = document.querySelector("#gridCheck");
+const moreInfoCheck = document.querySelector("#grid-check");
 const moreInfoForm = document.querySelector(".more-info");
 const taskContent = document.querySelector("#task-form");
-const taskCategory = document.querySelector("#inputState");
+const taskCategory = document.querySelector("#input-state");
 const addBtn = document.querySelector(".add-task");
 const ulList = document.querySelector(".task-list");
 const taskDate = document.querySelector("#task-date");
@@ -30,7 +30,6 @@ let infoBtn;
 let dropdownList;
 let liCount;
 let editedContent;
-let counter = -1;
 let editedDateText;
 let editedTimeText;
 let editedMsgText;
@@ -41,6 +40,13 @@ const colorDict = {
   "Household duties": "rgb(178, 200, 214, 0.85)",
   "Physical activity": "rgb(190, 196, 252, 0.85)",
   Other: "rgb(158, 182, 230, 0.85)",
+};
+
+const iconDict = {
+  confirmIcon: '<i class="fa-solid fa-check icon fa-lg fa-fw"></i>',
+  editIcon: '<i class="fa-solid fa-pen-to-square icon fa-lg fa-fw"></i>',
+  deleteIcon: '<i class="fa-solid fa-xmark icon fa-lg fa-fw"></i>',
+  moreInfoIcon: '<i class="fa-solid fa-info  fa-lg fa-fw"></i>',
 };
 
 const showMore = () => {
@@ -68,9 +74,6 @@ const addTask = () => {
     liItem.style.backgroundColor = colorDict[taskCategory.value];
     liItem.classList.add("liElement");
     liItem.textContent = taskContent.value;
-
-    counter++;
-    liItem.setAttribute("id", counter);
 
     if (!moreInfoForm.classList.contains("hide")) {
       addMoreInfoArea();
@@ -110,35 +113,28 @@ const createToolsArea = () => {
   liItem.append(toolsPanel);
 
   confirmBtn = document.createElement("button");
-  confirmBtn.classList.add("confirm");
-  confirmBtn.innerHTML = '<i class="fa-solid fa-check icon fa-lg fa-fw"></i>';
-  confirmBtn.setAttribute("id", counter);
-  confirmBtn.addEventListener("click", taskDone);
+  configBtn(confirmBtn, "confirm", iconDict["confirmIcon"], taskDone);
 
   editBtn = document.createElement("button");
-  editBtn.classList.add("edit");
-  editBtn.innerHTML =
-    '<i class="fa-solid fa-pen-to-square icon fa-lg fa-fw"></i>';
-  editBtn.setAttribute("id", counter);
-  editBtn.addEventListener("click", editTask);
+  configBtn(editBtn, "edit", iconDict["editIcon"], editTask);
 
   deleteBtn = document.createElement("button");
-  deleteBtn.classList.add("delete");
-  deleteBtn.innerHTML = '<i class="fa-solid fa-xmark icon fa-lg fa-fw"></i>';
-  deleteBtn.setAttribute("id", counter);
-  deleteBtn.addEventListener("click", removeTask);
+  configBtn(deleteBtn, "delete", iconDict["deleteIcon"], removeTask);
 
   toolsPanel.append(confirmBtn, editBtn, deleteBtn);
 
   if (!moreInfoForm.classList.contains("hide")) {
     infoBtn = document.createElement("button");
-    infoBtn.classList.add("more");
-    infoBtn.innerHTML = '<i class="fa-solid fa-info  fa-lg fa-fw"></i>';
-    infoBtn.addEventListener("click", showMoreInfo);
+    configBtn(infoBtn, "more", iconDict["moreInfoIcon"], showMoreInfo);
     toolsPanel.append(infoBtn);
   }
 };
 
+const configBtn = (btn, className, icon, listenerFunction) => {
+  btn.classList.add(className);
+  btn.innerHTML = icon;
+  btn.addEventListener("click", listenerFunction);
+};
 
 const addMoreInfoArea = () => {
   dropdownList = document.createElement("div");
@@ -164,7 +160,6 @@ const addMoreInfoArea = () => {
 const showMoreInfo = (e) => {
   const shownLi = e.target.closest("li");
 
-  console.log(shownLi.getElementsByClassName("details")[0]);
   const details = shownLi.getElementsByClassName("details")[0];
   details.classList.toggle("hide");
 };
@@ -213,7 +208,6 @@ const acceptTask = () => {
   } else {
     editedContent.firstChild.textContent = popupInput.value;
     if (editedContent.getElementsByClassName("details")[0]) {
-      console.log(editedContent.getElementsByClassName("details")[0]);
       editedDateText.textContent = taskDateLabel + editDate.value;
       editedTimeText.textContent = taskTimeLabel + editHour.value;
       editedMsgText.textContent = extraMgsLabel + editMsg.value;
@@ -230,9 +224,3 @@ cancelBtn.addEventListener("click", editWindowClose);
 acceptBtn.addEventListener("click", acceptTask);
 
 // TODO: sprawdzić konwencje nazewnictwa itd
-
-
-
-//TODO: sprawdzić czy używamy gdzieś ID
-//usunąć console logi
-//

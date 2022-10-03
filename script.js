@@ -21,17 +21,7 @@ const notDefinedValue = "Not defined";
 const taskDateLabel = "Task Date: ";
 const taskTimeLabel = "Task Time: ";
 const extraMgsLabel = "Additional info: ";
-let text;
-let liItem;
-let confirmBtn;
-let editBtn;
-let deleteBtn;
-let infoBtn;
-let dropdownList;
-let editedContent;
-let editedDateText;
-let editedTimeText;
-let editedMsgText;
+let text, liItem, confirmBtn, editBtn, deleteBtn, infoBtn, dropdownList, editedContent, editedDateText, editedTimeText, editedMsgText
 
 const colorDict = {
   Entertainment: "rgb(133, 130, 179, 0.85)",

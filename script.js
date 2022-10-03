@@ -16,6 +16,7 @@ const editDate = document.querySelector("#edit-date");
 const editHour = document.querySelector("#edit-hour");
 const editMsg = document.querySelector("#edit-message");
 const editInfoArea = document.querySelector(".edit-info");
+const emptyTodos = document.querySelector(".empty-info");
 
 const notDefinedValue = "Not defined";
 const taskDateLabel = "Task Date: ";
@@ -155,11 +156,17 @@ const showMoreInfo = (e) => {
 
 const taskDone = (e) => {
   const liLine = e.target.closest("li");
-  liLine.classList.add("completed");
+  liLine.classList.toggle("completed");
 };
 
 const removeTask = (e) => {
   e.target.closest("li").remove();
+  const allTodos = ulList.querySelectorAll('li')
+  console.log(allTodos);
+  if (allTodos.length == 0)
+  {emptyTodos.textContent = "Your list is empty!"
+
+  }
 };
 
 const editWindowOpen = () => {

@@ -22,7 +22,7 @@ const notDefinedValue = "Not defined";
 const taskDateLabel = "Task Date: ";
 const taskTimeLabel = "Task Time: ";
 const extraMgsLabel = "Additional info: ";
-let text, liItem, confirmBtn, editBtn, deleteBtn, infoBtn, dropdownList, editedContent, editedDateText, editedTimeText, editedMsgText
+let text, liItem, confirmBtn, editBtn, deleteBtn, infoBtn, dropdownList, editedContent, editedDateText, editedTimeText, editedMsgText;
 
 const colorDict = {
   Entertainment: "rgb(133, 130, 179, 0.85)",
@@ -86,6 +86,7 @@ const cleanForm = () => {
   taskTime.value = "";
   extraMsg.value = "";
   taskContent.value = "";
+  emptyTodos.textContent = "";
   taskCategory.value = notDefinedValue;
 };
 
@@ -161,11 +162,10 @@ const taskDone = (e) => {
 
 const removeTask = (e) => {
   e.target.closest("li").remove();
-  const allTodos = ulList.querySelectorAll('li')
+  const allTodos = ulList.querySelectorAll("li");
   console.log(allTodos);
-  if (allTodos.length == 0)
-  {emptyTodos.textContent = "Your list is empty!"
-
+  if (allTodos.length == 0) {
+    emptyTodos.textContent = "Your list is empty!";
   }
 };
 
@@ -214,7 +214,14 @@ const acceptTask = () => {
   }
 };
 
+const enterKeyCheck = (e) => {
+  if (e.key === "Enter") {
+    addTask();
+  }
+};
+
 moreInfoCheck.addEventListener("click", showMore);
 addBtn.addEventListener("click", addTask);
 cancelBtn.addEventListener("click", editWindowClose);
 acceptBtn.addEventListener("click", acceptTask);
+taskContent.addEventListener("keyup", enterKeyCheck);
